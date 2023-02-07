@@ -13,16 +13,10 @@ const createCoin = async (req, res) => {
 const getSingleCoin = async (req, res) => {
     const { coinName: coinName } = req.params
     const coin = await Coin.findOne({ coin_name: coinName })
-    res.status(200).json({ coin })
-}
-
-const updateCoin = async (req, res) => {
-    const { coinName: coinName } = req.params
-    const coin = await Coin.findByIdAndUpdate({ coin_name: coinName }, req.body, { new: true, runValidators: true })
     if (!coin) {
-        return res.status(404).json({ msg: `No coin with ID ${coinName} found` })
+        return res.status(404).json({ msg: `No coin with name ${coinName} found` })
     }
-    res.status(200).json({ msg: "Coin data updated", coin })
+    res.status(200).json({ coin })
 }
 
 const deleteCoin = async (req, res) => {
@@ -38,6 +32,5 @@ module.exports = {
     getAllCoins,
     createCoin,
     getSingleCoin,
-    updateCoin,
     deleteCoin,
 }
