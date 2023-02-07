@@ -10,20 +10,26 @@ const createCoin = async (req, res) => {
     res.status(200).json({ msg: "New coin data inserted", coin })
 }
 
+const getSingleCoin = async (req, res) => {
+    const { coinName: coinName } = req.params
+    const coin = await Coin.findOne({ coin_name: coinName })
+    res.status(200).json({ coin })
+}
+
 const updateCoin = async (req, res) => {
-    const { id: coinID } = req.params
-    const coin = await Coin.findByIdAndUpdate({ _id: coinID }, req.body, { new: true, runValidators: true })
+    const { coinName: coinName } = req.params
+    const coin = await Coin.findByIdAndUpdate({ coin_name: coinName }, req.body, { new: true, runValidators: true })
     if (!coin) {
-        return res.status(404).json({ msg: `No coin with ID ${coinID} found` })
+        return res.status(404).json({ msg: `No coin with ID ${coinName} found` })
     }
     res.status(200).json({ msg: "Coin data updated", coin })
 }
 
 const deleteCoin = async (req, res) => {
-    const { id: coinID } = req.params
-    const coin = await Coin.findByIdAndDelete({ _id: coinID })
+    const { coinName: coinName } = req.params
+    const coin = await Coin.deleteOne({ coin_name: coinName })
     if (!coin) {
-        return res.status(404).json({ msg: `No coin with ID ${coinID} found` })
+        return res.status(404).json({ msg: `No coin with name ${coinName} found` })
     }
     res.status(200).json({ msg: "Successfully deleted coin", coin })
 }
@@ -31,6 +37,7 @@ const deleteCoin = async (req, res) => {
 module.exports = {
     getAllCoins,
     createCoin,
+    getSingleCoin,
     updateCoin,
     deleteCoin,
 }

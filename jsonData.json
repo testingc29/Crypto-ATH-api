@@ -1,30 +1,30 @@
 [
     {
-        "coin_name": "Bitcoin",
-        "ath_price": 69044
-    },
-    {
-        "coin_name": "Ethereum",
-        "ath_price": 4878
-    },
-    {
-        "coin_name": "Bitcoin Cash",
-        "ath_price": 3785
-    },
-    {
         "coin_name": "Binance Coin",
-        "ath_price": 686
+        "ath_price": 686.32
+    },
+    {
+        "coin_name": "Solana",
+        "ath_price": 259.92
+    },
+    {
+        "coin_name": "Litecoin",
+        "ath_price": 410.26
     },
     {
         "coin_name": "Monero",
-        "ath_price": 542
+        "ath_price": 542.33
+    },
+    {
+        "coin_name": "Quant",
+        "ath_price": 427.42
     },
     {
         "coin_name": "ICP",
-        "ath_price": 700
+        "ath_price": 700.65
     },
     {
-        "coin_name": "LTC",
-        "ath_price": 410
+        "coin_name": "AAVE",
+        "ath_price": 661.69
     }
 ]
